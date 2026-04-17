@@ -1,7 +1,9 @@
-#custom song project
+#custom song 1 project
 # VARIABLES TO STORE SAMPLES
 mylife = "C:/Users/romeo_pearson/Downloads/In My Life (Remastered 2009).wav"
 letbe = "C:/Users/romeo_pearson/Downloads/The Beatles - Let it be (Isolated Vocals).wav"
+intro = "C:/Users/romeo_pearson/Desktop/DJbf.mp3"
+
 pianoNotesList = [:e4,:g4,:e4,:g4,:g4,:b3,:g4,:b3,:c4,:e4,:c4,:e4,:a3,:e4,:a3,:d4,:e4,:g3,:e4,:g3,:g4,:b3,:g4,:b3]
 index = 0
 #define function
@@ -9,6 +11,8 @@ define :notesb3g4 do
   play :b3
   play :g4
 end
+sample intro
+sleep 10
 #instrument
 use_synth :piano
 use_bpm 144
