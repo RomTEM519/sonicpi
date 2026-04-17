@@ -1,4 +1,80 @@
 #custom song 2
+#define functions
+define :e_min_chord do
+  play :e4
+  play :g4
+  play :b4
+end
+define :mes5and8 do
+  play :f4
+  play :a4
+  play :c5
+  sleep 0.5
+  play :a4
+  sleep 0.5
+  play :a4
+  sleep 1
+  play :a4
+  play :f4
+  play :c4
+  sleep 1
+  play :c4
+  play :f4
+  play :g4
+  sleep 1
+  play :f4
+  play :g4
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.5
+  play :c5
+  play :a4
+  play :f4
+  sleep 1
+  play :d5
+  sleep 0.5
+  play :b4
+  sleep 0.5
+  play :b4
+  play :g4
+  play :d4
+  sleep 1
+  play :g4
+  sleep 1
+  play :a4
+  play :f4
+  play :c4
+  sleep 1
+  play :d4
+  play :g4
+  play :b4
+  sleep 1
+  play :a4
+  sleep 0.25
+  play :c5
+  sleep 0.25
+  play :a5
+  sleep 0.25
+  play :d5
+  sleep 0.5
+  play :d5
+  sleep 0.25
+  play :c5
+  sleep 0.5
+  play :c5
+  play :es4
+  play :gs4
+  sleep 1
+  sleep 0.5
+  play :a4
+  sleep 0.5
+end
+use_bpm 60
 somethingDrums = "C:/Users/romeo_pearson/Downloads/Something.wav"
 firstVolume = 0.35
 2.times do
@@ -23,9 +99,7 @@ live_loop :Righthand do
   play :eb4
   play :g4
   sleep 1
-  play :d4
-  play :g4
-  play :b4
+  e_min_chord
   sleep 1
   
   #layer 1 mesure2
@@ -46,9 +120,7 @@ live_loop :Righthand do
   play :b4
   sleep 0.5
   #layer1 mesure3
-  play :e4
-  play :g4
-  play :b4
+  e_min_chord
   sleep 2
   play :e4
   play :b3
@@ -64,9 +136,7 @@ live_loop :Righthand do
   sleep 0.5
   play :b4
   sleep 0.5
-  play :e4
-  play :g4
-  play :b4
+  e_min_chord
   sleep 0.5
   play :c5
   sleep 0.5
@@ -74,77 +144,8 @@ live_loop :Righthand do
   sleep 0.5
   play :c5
   sleep 0.5
-  #top mesruew 5
-  play :f4
-  play :a4
-  play :c5
-  sleep 0.5
-  play :a4
-  sleep 0.5
-  play :a4
-  sleep 1
-  play :a4
-  play :f4
-  play :c4
-  sleep 1
-  play :c4
-  play :f4
-  play :g4
-  sleep 1
-  #top layer mes 6
-  play :f4
-  play :g4
-  play :d5
-  sleep 0.5
-  play :d5
-  sleep 0.5
-  play :d5
-  sleep 0.5
-  play :d5
-  sleep 0.5
-  play :c5
-  play :a4
-  play :f4
-  sleep 1
-  play :d5
-  sleep 0.5
-  play :b4
-  sleep 0.5
-  #top mes 7
-  play :b4
-  play :g4
-  play :d4
-  sleep 1
-  play :g4
-  sleep 1
-  play :a4
-  play :f4
-  play :c4
-  sleep 1
-  play :d4
-  play :g4
-  play :b4
-  sleep 1
-  #top mes 8
-  play :a4
-  sleep 0.25
-  play :c5
-  sleep 0.25
-  play :a5
-  sleep 0.25
-  play :d5
-  sleep 0.5
-  play :d5
-  sleep 0.25
-  play :c5
-  sleep 0.5
-  play :c5
-  play :es4
-  play :gs4
-  sleep 1
-  sleep 0.5
-  play :a4
-  sleep 0.5
+  #top mes5through8
+  mes5and8
   stop
 end
 
@@ -236,13 +237,54 @@ live_loop :LeftHand do
 end
 
 sleep 8
+notesList = [:bb3,:bb4,:b4,:b4,:e4,:c5,:d5,:c5]
 live_loop :stringMusic do
   use_synth :pluck
   with_fx :reverb, mix: 0.4, room: 0.6 do
     with_fx :lpf, cutoff: 95 do
-      
-      
+      #layer1 mesure4
+      num = 0
+      7.times do
+        play notesList[num]
+        sleep 0.5
+        num = num + 1
+      end
+      #string mesruew 5thru8
+      mes5and8
+      #mes 9
+      v = 1
+      3.times do
+        play :e5, amp: v
+        sleep 0.25
+        play :d5, amp: v
+        sleep 0.25
+        play :c5, amp: v
+        sleep 0.25
+        play :b4, amp: v
+        sleep 0.25
+        
+        play :c5, amp: v
+        sleep 0.5
+        play :d5, amp: v
+        sleep 0.25
+        play :c5, amp: v
+        sleep 0.25
+        
+        play [:gs4, :b4, :e5], amp: v
+        sleep 1.0
+        
+        play :a4, amp: v
+        sleep 0.25
+        play :b4, amp: v
+        sleep 0.25
+        play :a4, amp: v
+        sleep 0.5
+        
+        v = v - 0.25
+      end
       stop
     end
   end
 end
+sleep 32
+sample somethingDrums
