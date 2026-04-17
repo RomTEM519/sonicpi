@@ -76,12 +76,15 @@ define :mes5and8 do
 end
 use_bpm 60
 somethingDrums = "C:/Users/romeo_pearson/Downloads/Something.wav"
-firstVolume = 0.35
-2.times do
-  sample somethingDrums, amp: firstVolume
-  sleep 2
-  firstVolume = firstVolume + 2
-end
+djX = "C:/Users/romeo_pearson/Documents/Audacity/DJX.wav"
+outro = "C:/Users/romeo_pearson/Desktop/DJbf.mp3"
+ender = "C:/Users/romeo_pearson/Documents/Audacity/sumthing.wav"
+
+
+sample djX
+sleep 8
+sample somethingDrums
+sleep 1
 
 live_loop :Righthand do
   use_synth :piano
@@ -287,4 +290,6 @@ live_loop :stringMusic do
   end
 end
 sleep 32
-sample somethingDrums
+sample ender
+sleep 5
+sample outro
